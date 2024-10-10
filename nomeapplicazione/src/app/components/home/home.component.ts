@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Ipost } from '../../interfaces/ipost';
+import { IJSONresponse } from '../../interfaces/i-jsonresponse';
 
 @Component({
   selector: '.app-home',
@@ -12,7 +13,7 @@ export class HomeComponent {
     fetch('db.json')
       .then((res) => {
         if (res.ok) {
-          return res.json();
+          return <Promise<IJSONresponse>>res.json();
         } else {
           throw new Error('la risposta del server non è ok');
         }
